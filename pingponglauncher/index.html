@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Ping Pong Launcher Arduino - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ping Pong Launcher Arduino";
+        var mkdocs_page_input_path = "pingponglauncher.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Ping Pong Launcher Arduino</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#group-photos-and-memories">Group Photos and Memories</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#memories">Memories</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-photo">Project Photo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#video">Video</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-it-does">What It Does</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#components">Components</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wiring">Wiring</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arduino-to-l298n">Arduino to L298N</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#motors">Motors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-it-works">How It Works</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#serial-commands">Serial Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-format">Command Format</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arduino-code">Arduino Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#try-it">Try It!</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Ping Pong Launcher Arduino</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="build-a-mini-ping-pong-ball-launcher">Build a Mini Ping Pong Ball Launcher</h1>
+<p>Build a simple ping pong ball launcher using an Arduino, two DC motors, and an L298N motor driver.</p>
+<p>This launcher may not send the ball very far, but that is part of the fun. The goal is to experiment with motor speed, direction, positioning, and launcher design.</p>
+<h2 id="group-photos-and-memories">Group Photos and Memories</h2>
+<p><em>Add group photos here with permission from everyone pictured.</em></p>
+<h3 id="memories">Memories</h3>
+<p><em>Add a few notes after the class.</em></p>
+<ul>
+<li>What made everyone laugh?</li>
+<li>What launcher design worked best?</li>
+<li>Did anyone find a surprising way to improve the distance?</li>
+<li>What would we change next time?</li>
+</ul>
+<hr />
+<h2 id="project-photo">Project Photo</h2>
+<p><img alt="Project" src="../assets/pingponglauncher/project.png" /></p>
+<h2 id="video">Video</h2>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/arduino-pingpong.MOV" ></video>
+
+<hr />
+<h2 id="what-it-does">What It Does</h2>
+<p>Two spinning motors grip the sides of a ping pong ball and launch it forward.</p>
+<p>The Arduino controls the motors through an L298N motor driver. Commands sent through the Serial Monitor control:</p>
+<ul>
+<li>Which motor runs</li>
+<li>The motor direction</li>
+<li>The motor speed</li>
+<li>When both motors stop</li>
+</ul>
+<hr />
+<h2 id="components">Components</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>L298N motor driver</li>
+<li>Two small DC motors</li>
+<li>Ping pong balls</li>
+<li>Jumper wires</li>
+<li>Motor power supply</li>
+</ul>
+<hr />
+<h2 id="wiring">Wiring</h2>
+<p><img alt="Project" src="../assets/pingponglauncher/wires.png" /></p>
+<h3 id="arduino-to-l298n">Arduino to L298N</h3>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>L298N Pin</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>ENA</td>
+<td>Motor 1 speed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>IN1</td>
+<td>Motor 1 direction</td>
+</tr>
+<tr>
+<td>7</td>
+<td>IN2</td>
+<td>Motor 1 direction</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ENB</td>
+<td>Motor 2 speed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>IN3</td>
+<td>Motor 2 direction</td>
+</tr>
+<tr>
+<td>3</td>
+<td>IN4</td>
+<td>Motor 2 direction</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Common ground</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motors">Motors</h3>
+<table>
+<thead>
+<tr>
+<th>L298N Output</th>
+<th>Connection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OUT1 and OUT2</td>
+<td>Motor 1</td>
+</tr>
+<tr>
+<td>OUT3 and OUT4</td>
+<td>Motor 2</td>
+</tr>
+</tbody>
+</table>
+<p>Connect the external motor power source to the L298N motor power input.</p>
+<p>Make sure the Arduino and L298N share a common ground.</p>
+<hr />
+<h2 id="how-it-works">How It Works</h2>
+<p>The L298N is a dual motor driver. It allows the Arduino to control two DC motors without powering them directly from the Arduino pins.</p>
+<p>Each motor uses:</p>
+<ul>
+<li>Two direction pins</li>
+<li>One enable pin for speed control</li>
+</ul>
+<p>The Arduino uses PWM values from <code>0</code> to <code>255</code> to control motor speed.</p>
+<ul>
+<li><code>0</code> means stopped.</li>
+<li><code>255</code> means full speed.</li>
+</ul>
+<hr />
+<h2 id="serial-commands">Serial Commands</h2>
+<p>Set the Serial Monitor baud rate to:</p>
+<pre><code class="language-text">115200
+</code></pre>
+<p>Set the line ending to:</p>
+<pre><code class="language-text">Newline
+</code></pre>
+<p>Example commands:</p>
+<pre><code class="language-text">M1 CW 200
+M1 CCW 150
+M2 CW 255
+M2 CCW 200
+M1 STOP
+M2 STOP
+STOP
+</code></pre>
+<h3 id="command-format">Command Format</h3>
+<pre><code class="language-text">MOTOR DIRECTION SPEED
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">M1 CW 200
+</code></pre>
+<p>This tells Motor 1 to rotate clockwise at a speed of <code>200</code>.</p>
+<hr />
+<h2 id="arduino-code">Arduino Code</h2>
+<pre><code class="language-cpp">const int ENA = 5;
+const int IN1 = 8;
+const int IN2 = 7;
+
+const int ENB = 6;
+const int IN3 = 4;
+const int IN4 = 3;
+
+String command;
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(ENA, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+
+  pinMode(ENB, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+  stopAll();
+
+  Serial.println(&quot;Ready&quot;);
+  Serial.println(&quot;Examples:&quot;);
+  Serial.println(&quot;M1 CW 200&quot;);
+  Serial.println(&quot;M1 CCW 150&quot;);
+  Serial.println(&quot;M2 CW 255&quot;);
+  Serial.println(&quot;M2 STOP&quot;);
+  Serial.println(&quot;STOP&quot;);
+}
+
+void loop() {
+  if (Serial.available()) {
+    command = Serial.readStringUntil('\n');
+    command.trim();
+
+    processCommand(command);
+  }
+}
+
+void processCommand(String cmd) {
+  if (cmd == &quot;STOP&quot;) {
+    stopAll();
+    return;
+  }
+
+  int firstSpace = cmd.indexOf(' ');
+  int secondSpace = cmd.indexOf(' ', firstSpace + 1);
+
+  if (firstSpace == -1) {
+    return;
+  }
+
+  String motor = cmd.substring(0, firstSpace);
+
+  String direction;
+  int speed = 0;
+
+  if (secondSpace == -1) {
+    direction = cmd.substring(firstSpace + 1);
+  } else {
+    direction = cmd.substring(firstSpace + 1, secondSpace);
+    speed = cmd.substring(secondSpace + 1).toInt();
+    speed = constrain(speed, 0, 255);
+  }
+
+  if (motor == &quot;M1&quot;) {
+    runMotor(ENA, IN1, IN2, direction, speed);
+  } else if (motor == &quot;M2&quot;) {
+    runMotor(ENB, IN3, IN4, direction, speed);
+  }
+}
+
+void runMotor(
+  int enablePin,
+  int pin1,
+  int pin2,
+  String direction,
+  int speed
+) {
+  if (direction == &quot;CW&quot;) {
+    digitalWrite(pin1, HIGH);
+    digitalWrite(pin2, LOW);
+    analogWrite(enablePin, speed);
+  } else if (direction == &quot;CCW&quot;) {
+    digitalWrite(pin1, LOW);
+    digitalWrite(pin2, HIGH);
+    analogWrite(enablePin, speed);
+  } else if (direction == &quot;STOP&quot;) {
+    analogWrite(enablePin, 0);
+  }
+}
+
+void stopAll() {
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+}
+</code></pre>
+<h2 id="try-it">Try It!</h2>
+<p>Open the Serial Monitor and set the baud rate to <strong>115200</strong>.</p>
+<p>Start by entering:</p>
+<pre><code class="language-text">M1 CW 100
+M2 CCW 100
+</code></pre>
+<p>If the ping pong ball does not launch, don't worry! Every launcher is built a little differently.</p>
+<p>Try experimenting with:</p>
+<ul>
+<li>Changing the motor speed (<code>100</code>, <code>150</code>, <code>200</code>, <code>255</code>)</li>
+<li>Switching <code>CW</code> to <code>CCW</code></li>
+<li>Moving the motors closer together or farther apart</li>
+<li>Adjusting the angle of the motors</li>
+</ul>
+<p>Part of the fun is finding the combination that works best for your launcher.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../basketball-arduino/" class="btn btn-neutral float-left" title="Basketball Arduino"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../basketball-arduino/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
