@@ -8,6 +8,10 @@ A simple Arduino project that uses an IR sensor to detect when a ping pong ball 
 
 TODO
 
+## Memories
+
+TODO
+
 ---
 
 ## Photos
