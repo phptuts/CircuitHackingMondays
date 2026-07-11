@@ -1,0 +1,8 @@
+site_name: Circuit Hacking Mondays
+nav:
+  - About: index.md
+  - Basketball Arduino: basketball-arduino.md
+theme:
+  name: readthedocs
+extra_css:
+  - css/style.css
