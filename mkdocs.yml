@@ -2,6 +2,7 @@ site_name: Circuit Hacking Mondays
 nav:
   - About: index.md
   - Basketball Arduino: basketball-arduino.md
+  - Ping Pong Launcher Arduino: pingponglauncher.md
 theme:
   name: readthedocs
 extra_css:

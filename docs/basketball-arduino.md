@@ -14,7 +14,7 @@ TODO
 
 ---
 
-## Photos
+## Project Photo
 
 ![Project](./assets/basketball-arduino/project.png)
 
