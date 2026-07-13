@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Teacher Notes — Create Your Own RGB Color - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Teacher Notes \u2014 Create Your Own RGB Color";
+        var mkdocs_page_input_path = "stations/rgbled.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Teacher Notes — Create Your Own RGB Color</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="teacher-notes-create-your-own-rgb-color">Teacher Notes — Create Your Own RGB Color</h1>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/arduino-rgbled.mov" ></video>
+
+<h2 id="wiring">Wiring</h2>
+<p><img alt="rgb led" src="../../assets/stations/rgbled/rgb_led.jpg" /></p>
+<p><img alt="wires" src="../../assets/stations/rgbled/wires.png" /></p>
+<h3 id="arduino-connections">Arduino Connections</h3>
+<table>
+<thead>
+<tr>
+<th>RGB LED Connection</th>
+<th style="text-align: right;">Arduino Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td style="text-align: right;">D11</td>
+</tr>
+<tr>
+<td>Green</td>
+<td style="text-align: right;">D10</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td style="text-align: right;">D9</td>
+</tr>
+<tr>
+<td>Ground — longest leg</td>
+<td style="text-align: right;">GND</td>
+</tr>
+</tbody>
+</table>
+<p>Each red, green, and blue leg should use a resistor.</p>
+<h2 id="how-the-rgb-led-works">How the RGB LED Works</h2>
+<p>The LED contains three smaller lights:</p>
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+<p>Each color uses a number between <code>0</code> and <code>255</code>.</p>
+<ul>
+<li><code>0</code> means that color is off.</li>
+<li><code>255</code> means that color is at full brightness.</li>
+<li>Numbers between <code>0</code> and <code>255</code> create different brightness levels.</li>
+</ul>
+<p>Mixing the three values creates a new color.</p>
+<h2 id="student-activity">Student Activity</h2>
+<h3 id="create-your-own-color">Create Your Own Color</h3>
+<p>Find these three lines near the top of the code:</p>
+<pre><code class="language-cpp">int red = 100;
+int green = 0;
+int blue = 100;
+</code></pre>
+<p>Change the numbers to create your own color.</p>
+<p>Then:</p>
+<ol>
+<li>Copy the code.</li>
+<li>Open Duino.</li>
+<li>Connect the Arduino.</li>
+<li>Upload the code.</li>
+<li>Look at the color produced by the LED.</li>
+<li>Change the numbers and try again.</li>
+</ol>
+<p><a href="TODO">Open the Arduino Upload Instructions</a></p>
+<hr />
+<h2 id="starter-code">Starter Code</h2>
+<pre><code class="language-cpp">/// EDIT COLORS
+
+int red = 100;
+int green = 0;
+int blue = 100;
+
+int RED_PIN = 11;
+int GREEN_PIN = 10;
+int BLUE_PIN = 9;
+
+void setup() {
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+
+  analogWrite(RED_PIN, red);
+  analogWrite(GREEN_PIN, green);
+  analogWrite(BLUE_PIN, blue);
+}
+
+void loop() {
+}
+</code></pre>
+<hr />
+<h2 id="colors-to-try">Colors to Try</h2>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th style="text-align: right;">Red</th>
+<th style="text-align: right;">Green</th>
+<th style="text-align: right;">Blue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Green</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">255</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Cyan</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr>
+<td>White</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">255</td>
+</tr>
+<tr>
+<td>Light pink</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">100</td>
+</tr>
+</tbody>
+</table>
+<p>The exact colors may look different depending on the LED and the room lighting.</p>
+<h2 id="things-to-try">Things to Try</h2>
+<ul>
+<li>Create your favorite color.</li>
+<li>Make the LED brighter.</li>
+<li>Make the LED dimmer.</li>
+<li>Create the strangest color you can.</li>
+<li>Try changing only one number at a time.</li>
+<li>Try to create white without using the example table.</li>
+</ul>
+<h2 id="teacher-notes">Teacher Notes</h2>
+<p>Keep the explanation short. Students do not need a detailed lesson about PWM before experimenting.</p>
+<p>A simple explanation is enough:</p>
+<blockquote>
+<p>The Arduino rapidly turns each color on and off to control how bright it appears.</p>
+</blockquote>
+<p>Let students change the numbers and upload repeatedly. The immediate feedback is the lesson.</p>
+<p>Some RGB LEDs may use common anode instead of common cathode. With a common-anode LED, the brightness values work in reverse. This page assumes the longest leg connects to ground and that larger numbers create brighter colors.</p>
+<h2 id="memories">Memories</h2>
+<p><em>Add photos and notes after the class.</em></p>
+<ul>
+<li>What colors did people create?</li>
+<li>Did anyone discover an unexpected color?</li>
+<li>Which color was the class favorite?</li>
+<li>What made people laugh?</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

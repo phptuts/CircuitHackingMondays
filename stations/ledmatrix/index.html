@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>LED Matrix Animation Studio - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "LED Matrix Animation Studio";
+        var mkdocs_page_input_path = "stations/ledmatrix.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">LED Matrix Animation Studio</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="led-matrix-animation-studio">LED Matrix Animation Studio</h1>
+<p>Create your own pixel art and animations for a 8×8 LED matrix using a simple web-based editor. Design your animation, copy the generated Arduino code, upload it, and watch your creation come to life!</p>
+<h2 id="project">Project</h2>
+<p><img alt="Project" src="../../assets/stations/ledmatrix/project.png" /></p>
+<h2 id="video">Video</h2>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/ledmatrix-station-arduino.mov" ></video>
+
+<h2 id="duino-app-libraries">Duino App Libraries</h2>
+<ul>
+<li>LedControl</li>
+</ul>
+<h2 id="what-it-does">What It Does</h2>
+<p>This project lets you design animations for a 8×8 LED matrix without writing binary by hand.</p>
+<p>Using the web editor you can:</p>
+<ul>
+<li>Draw pixel art</li>
+<li>Create multiple animation frames</li>
+<li>Change the animation speed</li>
+<li>Automatically generate Arduino code</li>
+<li>Copy and paste the generated code into the Arduino IDE</li>
+</ul>
+<h2 id="components">Components</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>8×8 MAX7219 LED Matrix </li>
+<li>USB cable</li>
+<li>Jumper wires</li>
+</ul>
+<h2 id="wiring">Wiring</h2>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>LED Matrix Pin</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V</td>
+<td>VCC</td>
+<td>Power</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>12</td>
+<td>DIN</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>11</td>
+<td>CLK</td>
+<td>Clock</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CS / LOAD</td>
+<td>Chip Select</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="setup">Setup</h2>
+<ul>
+<li>
+<p>Go to this site and <a href="https://phptuts.github.io/Tools/ledmatrix.html">Web Animation Editor</a> bookmark it.</p>
+</li>
+<li>
+<p>Ex</p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

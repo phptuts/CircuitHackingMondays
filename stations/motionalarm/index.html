@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>🚨 Motion Alarm - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udea8 Motion Alarm";
+        var mkdocs_page_input_path = "stations/motionalarm.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">🚨 Motion Alarm</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="motion-alarm">🚨 Motion Alarm</h1>
+<h2 id="overview">Overview</h2>
+<p>Build your own motion alarm using an Arduino, motion sensor, LED, and buzzer.</p>
+<p>When motion is detected:</p>
+<ul>
+<li>🚨 The LED flashes.</li>
+<li>🔊 The buzzer sounds.</li>
+</ul>
+<p>Students customize the alarm by changing only <strong>two variables</strong>:</p>
+<ul>
+<li><strong>Alarm Delay</strong> – How quickly the alarm flashes.</li>
+<li><strong>Alarm Sound</strong> – The pitch of the buzzer.</li>
+</ul>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/motion-alarm.mp4" ></video>
+
+<p><img alt="project" src="../../assets/stations/motion-alarm/project.png" /></p>
+<h2 id="components">Components</h2>
+<table>
+<thead>
+<tr>
+<th>Qty</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Arduino Uno</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Breadboard</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Motion Sensor</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Red LED</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Resistor</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Passive Buzzer</td>
+</tr>
+<tr>
+<td>1</td>
+<td>USB Cable</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Jumper Wires</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="circuit">Circuit</h2>
+<blockquote>
+<p>📷 <em>Insert circuit photo here.</em></p>
+</blockquote>
+<h2 id="wiring">Wiring</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Arduino Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motion Sensor OUT</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Passive Buzzer</td>
+<td>5</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Motion Sensor VCC</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>Motion Sensor GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>LED GND</td>
+<td>GND (through 220Ω resistor)</td>
+</tr>
+<tr>
+<td>Buzzer GND</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">int alarmDelay = 100;
+int alarmSound = 300;
+
+int SENSOR_PIN = 4;
+int BUZZER_PIN = 5;
+int LED_PIN = 7;
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(SENSOR_PIN, INPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+  if (!digitalRead(SENSOR_PIN)) {
+
+    tone(BUZZER_PIN, alarmSound);
+
+    digitalWrite(LED_PIN, HIGH);
+
+    delay(alarmDelay);
+
+    noTone(BUZZER_PIN);
+
+    digitalWrite(LED_PIN, LOW);
+
+    delay(alarmDelay);
+  }
+}
+</code></pre>
+<h2 id="student-play-area">Student Play Area</h2>
+<p>Students should only edit these two lines:</p>
+<pre><code class="language-cpp">int alarmDelay = 100;
+int alarmSound = 300;
+</code></pre>
+<hr />
+<h2 id="what-the-variables-do">What the Variables Do</h2>
+<h3 id="alarmdelay"><code>alarmDelay</code></h3>
+<p>Controls how quickly the LED flashes and the buzzer beeps.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Very Fast</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td style="text-align: right;">300</td>
+<td>Slow</td>
+</tr>
+<tr>
+<td style="text-align: right;">700</td>
+<td>Very Slow</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="alarmsound"><code>alarmSound</code></h3>
+<p>Controls the pitch of the buzzer.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">150</td>
+<td>Low</td>
+</tr>
+<tr>
+<td style="text-align: right;">300</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td style="text-align: right;">600</td>
+<td>High</td>
+</tr>
+<tr>
+<td style="text-align: right;">1000</td>
+<td>Very High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="student-challenges">Student Challenges</h2>
+<h3 id="easy">⭐ Easy</h3>
+<ul>
+<li>Make the alarm as fast as possible.</li>
+<li>Make the alarm as slow as possible.</li>
+</ul>
+<h3 id="medium">⭐⭐ Medium</h3>
+<ul>
+<li>Make the lowest sounding alarm.</li>
+<li>Make the highest sounding alarm.</li>
+</ul>
+<h3 id="hard">⭐⭐⭐ Hard</h3>
+<p>Invent your own security system!</p>
+<p>Ideas:</p>
+<ul>
+<li>👽 Alien Detector</li>
+<li>🍪 Cookie Protector</li>
+<li>🐉 Dragon Alarm</li>
+<li>🏰 Castle Security</li>
+<li>💎 Treasure Guard</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

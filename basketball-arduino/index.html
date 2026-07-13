@@ -47,10 +47,6 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Basketball Arduino</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#group-photo">Group Photo</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#memories">Memories</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#project-photo">Project Photo</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#video">Video</a>
@@ -60,8 +56,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#components">Components</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#wiring">Wiring</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#digital-display-wiring">Digital Display Wiring</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#libraries">Libraries</a>
+    <li class="toctree-l3"><a class="reference internal" href="#lcd-screen-wiriing">LCD Screen Wiriing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#digital-display-libraries">Digital Display Libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lcd-library">LCD Library</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it Works</a>
     </li>
@@ -69,7 +73,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lessons-learned">Lessons Learned</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#code">Code</a>
+    <li class="toctree-l2"><a class="reference internal" href="#digital-dispaly-code">Digital Dispaly Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lcd-version-code">LCD Version Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memories">Memories</a>
     </li>
     </ul>
                 </li>
@@ -104,11 +114,6 @@
                 <h1 id="arduino-basketball-scoreboard">Arduino Basketball Scoreboard</h1>
 <p>A simple Arduino project that uses an IR sensor to detect when a ping pong ball passes through the hoop and automatically updates the score on a 4-digit TM1637 display.</p>
 <p><strong>Date:</strong> July 13, 2026</p>
-<h2 id="group-photo">Group Photo</h2>
-<p>TODO</p>
-<h2 id="memories">Memories</h2>
-<p>TODO</p>
-<hr />
 <h2 id="project-photo">Project Photo</h2>
 <p><img alt="Project" src="../assets/basketball-arduino/project.png" /></p>
 <hr />
@@ -128,6 +133,7 @@
 </ul>
 <hr />
 <h2 id="wiring">Wiring</h2>
+<h3 id="digital-display-wiring">Digital Display Wiring</h3>
 <table>
 <thead>
 <tr>
@@ -176,15 +182,61 @@
 </table>
 <p><img alt="digital display Wires" src="../assets/basketball-arduino/digital_display.png" /></p>
 <p><img alt="sensor wires" src="../assets/basketball-arduino/sensor_wires.png" /></p>
-<hr />
-<h2 id="libraries">Libraries</h2>
+<h3 id="lcd-screen-wiriing">LCD Screen Wiriing</h3>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>Component</th>
+<th>Component Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V</td>
+<td>LCD</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>LCD</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>LCD</td>
+<td>SDA</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>LCD</td>
+<td>SCL</td>
+</tr>
+<tr>
+<td>3.3V</td>
+<td>IR Sensor</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>IR Sensor</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>IR Sensor</td>
+<td>OUT</td>
+</tr>
+</tbody>
+</table>
+<h2 id="digital-display-libraries">Digital Display Libraries</h2>
 <pre><code class="language-cpp">#include &lt;TM1637Display.h&gt;
 </code></pre>
 <p>Library used:</p>
 <ul>
 <li><strong>TM1637Display</strong></li>
 </ul>
-<hr />
+<h2 id="lcd-library">LCD Library</h2>
 <h2 id="how-it-works">How it Works</h2>
 <ol>
 <li>The Arduino waits for the IR sensor to detect a ball.</li>
@@ -209,7 +261,7 @@
 <li>The TM1637 display is simple to wire and only requires two digital pins.</li>
 </ul>
 <hr />
-<h2 id="code">Code</h2>
+<h2 id="digital-dispaly-code">Digital Dispaly Code</h2>
 <pre><code class="language-c++">#include &lt;TM1637Display.h&gt;
 
 TM1637Display display(2, 3);
@@ -237,6 +289,44 @@ void loop() {
     }  
 }
 </code></pre>
+<h3 id="lcd-version-code">LCD Version Code</h3>
+<pre><code class="language-cpp">#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+int score = 0;
+void setup() {
+    Serial.begin(115200);
+    lcd.init();                      // initialize the lcd 
+    lcd.backlight();
+    pinMode(8, INPUT);
+    lcd.setCursor(0,0);
+    lcd.print(&quot;Play Basketball!&quot;);
+}
+
+void loop() {
+    if (Serial.available()) {
+        String restart = Serial.readStringUntil('\n');
+        if (restart == &quot;RESTART&quot;) {
+            score = 0;
+            lcd.setCursor(0,1);
+            lcd.print(&quot;                &quot;);
+        }
+    }
+
+    if (!digitalRead(8)) {
+        score += 2;
+        lcd.setCursor(0,1);
+        lcd.print(&quot;                &quot;);
+        lcd.setCursor(0,1);
+        lcd.print(&quot;Score: &quot;);
+        lcd.setCursor(7,1);
+        lcd.print(score);
+        delay(1000);
+    }  
+}
+</code></pre>
+<h2 id="memories">Memories</h2>
               
             </div>
           </div><footer>
