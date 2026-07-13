@@ -4,15 +4,6 @@ A simple Arduino project that uses an IR sensor to detect when a ping pong ball 
 
 **Date:** July 13, 2026
 
-## Group Photo
-
-TODO
-
-## Memories
-
-TODO
-
----
 
 ## Project Photo
 
@@ -42,6 +33,8 @@ When a ping pong ball passes through the hoop, the IR sensor detects it and the 
 
 ## Wiring
 
+### Digital Display Wiring
+
 | Arduino Pin | Component      | Component Pin |
 | ----------- | -------------- | ------------- |
 | 5V          | TM1637 Display | VCC           |
@@ -52,14 +45,27 @@ When a ping pong ball passes through the hoop, the IR sensor detects it and the 
 | GND         | IR Sensor      | GND           |
 | D8          | IR Sensor      | OUT           |
 
+
 ![digital display Wires](./assets/basketball-arduino/digital_display.png)
 
 ![sensor wires](./assets/basketball-arduino/sensor_wires.png)
 
 
----
+### LCD Screen Wiriing
 
-## Libraries
+| Arduino Pin | Component | Component Pin |
+| ----------- | --------- | ------------- |
+| 5V          | LCD       | VCC           |
+| GND         | LCD       | GND           |
+| A4          | LCD       | SDA           |
+| A5          | LCD       | SCL           |
+| 3.3V        | IR Sensor | VCC           |
+| GND         | IR Sensor | GND           |
+| D8          | IR Sensor | OUT           |
+
+
+
+## Digital Display Libraries
 
 ```cpp
 #include <TM1637Display.h>
@@ -69,7 +75,9 @@ Library used:
 
 * **TM1637Display**
 
----
+## LCD Library
+
+
 
 ## How it Works
 
@@ -98,7 +106,7 @@ Library used:
 
 ---
 
-## Code
+## Digital Dispaly Code
 
 ```c++
 #include <TM1637Display.h>
@@ -129,5 +137,45 @@ void loop() {
 }
 ```
 
+### LCD Version Code
+
+```cpp
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+int score = 0;
+void setup() {
+    Serial.begin(115200);
+    lcd.init();                      // initialize the lcd 
+    lcd.backlight();
+    pinMode(8, INPUT);
+    lcd.setCursor(0,0);
+    lcd.print("Play Basketball!");
+}
+
+void loop() {
+    if (Serial.available()) {
+        String restart = Serial.readStringUntil('\n');
+        if (restart == "RESTART") {
+            score = 0;
+            lcd.setCursor(0,1);
+            lcd.print("                ");
+        }
+    }
+
+    if (!digitalRead(8)) {
+        score += 2;
+        lcd.setCursor(0,1);
+        lcd.print("                ");
+        lcd.setCursor(0,1);
+        lcd.print("Score: ");
+        lcd.setCursor(7,1);
+        lcd.print(score);
+        delay(1000);
+    }  
+}
+```
 
 
+## Memories
