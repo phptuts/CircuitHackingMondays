@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Motion Alarm - Circuit Hacking Mondays</title>
+    <title>Basketball Game - Circuit Hacking Mondays</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Motion Alarm";
-        var mkdocs_page_input_path = "stations/motionalarm.md";
+        var mkdocs_page_name = "Basketball Game";
+        var mkdocs_page_input_path = "stations/basketball.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -56,18 +56,14 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Station Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../basketball/">Basketball Game</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ledmatrix/">Led Matrix</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../lcdscreen/">LCD Screen</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Motion Alarm</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basketball Game</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#video">Video</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#challenges">Challenges</a>
+    <li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges">Challenges</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#easy">⭐ Easy</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#medium">⭐⭐ Medium</a>
@@ -85,6 +81,12 @@
         </ul>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ledmatrix/">Led Matrix</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lcdscreen/">LCD Screen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../motionalarm/">Motion Alarm</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../rgbled/">RGB LED</a>
                   </li>
@@ -104,7 +106,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Stations</li>
-      <li class="breadcrumb-item active">Motion Alarm</li>
+      <li class="breadcrumb-item active">Basketball Game</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -113,139 +115,232 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="motion-alarm">🚨 Motion Alarm</h1>
-<p>Watch out! Your Arduino is guarding a secret treasure. When someone gets too close, the light flashes and the alarm goes off!</p>
-<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/motion-alarm.mp4" ></video>
+                <h1 id="basketball-machine">Basketball Machine</h1>
+<p>Build your own Arduino basketball game and see how many baskets you can score before time runs out. Change the game rules by adjusting the points per basket, game length, and winning score.</p>
+<p><img alt="Project" src="../../assets/basketball-arduino/project.png" /></p>
+<h2 id="video">Video</h2>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/arduino_basketball.mov" ></video>
 
-<p><img alt="project" src="../../assets/stations/motion-alarm/project.png" /></p>
 <h2 id="instructions">Instructions</h2>
 <ol>
 <li>Change the two numbers in the code and upload to see what it does.</li>
 </ol>
-<pre><code class="language-ccp">int alarmDelay = 100; // This one controls long the sound is
-int alarmSound = 300; //  This variable controls the type of sound
+<pre><code class="language-ccp">int pointsPerShot = 2;
+int gameLength = 30;
+int winningScore = 20;
 </code></pre>
-<h2 id="challenges">Challenges</h2>
+<h3 id="challenges">Challenges</h3>
 <h3 id="easy">⭐ Easy</h3>
 <ul>
-<li>Make the alarm beep faster.</li>
-<li>Make the alarm beep slower.</li>
+<li>Make each basket worth 1 point.</li>
+<li>Make each basket worth 5 points.</li>
 </ul>
 <hr />
 <h3 id="medium">⭐⭐ Medium</h3>
-<p>Can you make:</p>
+<p>Can you create:</p>
 <ul>
-<li>📢 The highest sounding alarm</li>
-<li>🔔 The lowest sounding alarm</li>
-<li>⚡ The fastest alarm</li>
-<li>🐢 The slowest alarm</li>
+<li>⚡ Speed Round (15 seconds)</li>
+<li>🏀 Long Game (60 seconds)</li>
+<li>💯 Mega Points (10 points per basket)</li>
 </ul>
 <hr />
 <h3 id="design-challenge">⭐⭐⭐ Design Challenge</h3>
-<p>Design your own alarm!</p>
-<p>Give it a fun name and choose the settings that match.</p>
+<p>Design your own basketball game!</p>
+<p>Give it a fun name.</p>
 <p>Ideas:</p>
 <ul>
-<li>👽 Alien Detector</li>
-<li>🐉 Dragon Alarm</li>
-<li>💎 Treasure Guard</li>
-<li>🍪 Cookie Protector</li>
-<li>🚀 Space Station Alarm</li>
-<li>🏰 Castle Security</li>
-<li>🦖 Dinosaur Detector</li>
+<li>🏀 Slam Dunk Challenge</li>
+<li>⚡ Lightning Round</li>
+<li>👑 King's Court</li>
+<li>🚀 Space Basketball</li>
+<li>🎯 Super Shooter</li>
 </ul>
-<p><strong>Alarm Name:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
-<p><strong>Alarm Delay:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
-<p><strong>Alarm Sound:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
+<p><strong>Game Name:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
+<p><strong>Points Per Shot:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
+<p><strong>Game Length:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__ seconds</p>
 <h2 id="wiring">Wiring</h2>
 <table>
 <thead>
 <tr>
-<th>Component</th>
 <th>Arduino Pin</th>
+<th>Component</th>
+<th>Component Pin</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Motion Sensor OUT</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Passive Buzzer</td>
-<td>5</td>
-</tr>
-<tr>
-<td>LED</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Motion Sensor VCC</td>
 <td>5V</td>
+<td>TM1637 Display</td>
+<td>VCC</td>
 </tr>
 <tr>
-<td>Motion Sensor GND</td>
+<td>GND</td>
+<td>TM1637 Display</td>
 <td>GND</td>
 </tr>
 <tr>
-<td>LED GND</td>
-<td>GND (through 220Ω resistor)</td>
+<td>2</td>
+<td>TM1637 Display</td>
+<td>CLK</td>
 </tr>
 <tr>
-<td>Buzzer GND</td>
+<td>3</td>
+<td>TM1637 Display</td>
+<td>DIO</td>
+</tr>
+<tr>
+<td>3.3V</td>
+<td>IR Sensor</td>
+<td>VCC</td>
+</tr>
+<tr>
 <td>GND</td>
+<td>IR Sensor</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>8</td>
+<td>IR Sensor</td>
+<td>OUT</td>
 </tr>
 </tbody>
 </table>
+<p><img alt="digital display Wires" src="../../assets/basketball-arduino/digital_display.png" /></p>
+<p><img alt="sensor wires" src="../../assets/basketball-arduino/sensor_wires.png" /></p>
 <h2 id="setup">Setup</h2>
 <p>This uses the <a href="../">standard setup instructions</a>.</p>
 <h3 id="starter-code">Starter Code</h3>
-<pre><code class="language-cpp">
+<pre><code class="language-cpp">#include &lt;TM1637Display.h&gt;
+
 // ==========================================
 // PLAY AREA
 // ==========================================
 
-int alarmDelay = 100; // This one controls long the sound is
-int alarmSound = 300; //  This variable controls the type of sound
+int pointsPerShot = 2;
+int gameLength = 30;   // Seconds
+int winningScore = 20;
 
 // ==========================================
 // PINS
 // ==========================================
 
-int SENSOR_PIN = 4;
-int BUZZER_PIN = 5;
-int LED_PIN = 7;
+const int DISPLAY_CLK_PIN = 2;
+const int DISPLAY_DIO_PIN = 3;
+const int RESET_BUTTON_PIN = 4;
+const int BUZZER_PIN = 5;
+const int SENSOR_PIN = 8;
+
+TM1637Display display(DISPLAY_CLK_PIN, DISPLAY_DIO_PIN);
+
+int score = 0;
+unsigned long gameStartTime = 0;
+
+bool gameRunning = false;
+bool sensorWasBlocked = false;
 
 void setup() {
-  Serial.begin(115200);
-
   pinMode(SENSOR_PIN, INPUT);
+  pinMode(RESET_BUTTON_PIN, INPUT_PULLUP);
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(LED_PIN, OUTPUT);
+
+  display.setBrightness(7);
+  display.showNumberDec(0, true);
+
+  startGame();
 }
 
 void loop() {
-  if (!digitalRead(SENSOR_PIN)) {
-
-    tone(BUZZER_PIN, alarmSound);
-
-    digitalWrite(LED_PIN, HIGH);
-
-    delay(alarmDelay);
-
-    noTone(BUZZER_PIN);
-
-    digitalWrite(LED_PIN, LOW);
-
-    delay(alarmDelay);
+  if (digitalRead(RESET_BUTTON_PIN) == LOW) {
+    startGame();
+    delay(300);
   }
+
+  if (!gameRunning) {
+    return;
+  }
+
+  unsigned long elapsedTime = (millis() - gameStartTime) / 1000;
+
+  if (elapsedTime &gt;= gameLength) {
+    endGame();
+    return;
+  }
+
+  bool sensorBlocked = digitalRead(SENSOR_PIN) == LOW;
+
+  // Count only once when the ball enters the sensor.
+  if (sensorBlocked &amp;&amp; !sensorWasBlocked) {
+    score += pointsPerShot;
+
+    display.showNumberDec(score, true);
+    playBasketSound();
+
+    if (score &gt;= winningScore) {
+      winGame();
+    }
+  }
+
+  sensorWasBlocked = sensorBlocked;
+}
+
+void startGame() {
+  score = 0;
+  gameRunning = true;
+  sensorWasBlocked = false;
+  gameStartTime = millis();
+
+  display.showNumberDec(score, true);
+  playStartSound();
+}
+
+void endGame() {
+  gameRunning = false;
+
+  // Keep the final score on the display.
+  display.showNumberDec(score, true);
+  playEndSound();
+}
+
+void winGame() {
+  gameRunning = false;
+
+  for (int i = 0; i &lt; 3; i++) {
+    display.clear();
+    tone(BUZZER_PIN, 900, 150);
+    delay(200);
+
+    display.showNumberDec(score, true);
+    tone(BUZZER_PIN, 1300, 150);
+    delay(200);
+  }
+
+  noTone(BUZZER_PIN);
+}
+
+void playBasketSound() {
+  tone(BUZZER_PIN, 1000, 100);
+  delay(120);
+  tone(BUZZER_PIN, 1400, 100);
+}
+
+void playStartSound() {
+  tone(BUZZER_PIN, 600, 100);
+  delay(120);
+  tone(BUZZER_PIN, 900, 100);
+}
+
+void playEndSound() {
+  tone(BUZZER_PIN, 700, 250);
+  delay(300);
+  tone(BUZZER_PIN, 400, 400);
 }
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../lcdscreen/" class="btn btn-neutral float-left" title="LCD Screen"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../rgbled/" class="btn btn-neutral float-right" title="RGB LED">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Station Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ledmatrix/" class="btn btn-neutral float-right" title="Led Matrix">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -268,10 +363,10 @@ void loop() {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../lcdscreen/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../rgbled/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ledmatrix/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
