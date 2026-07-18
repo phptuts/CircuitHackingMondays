@@ -1,42 +1,63 @@
 # 🚨 Motion Alarm
 
-## Overview
+Watch out! Your Arduino is guarding a secret treasure. When someone gets too close, the light flashes and the alarm goes off!
 
-Build your own motion alarm using an Arduino, motion sensor, LED, and buzzer.
-
-When motion is detected:
-
-- 🚨 The LED flashes.
-- 🔊 The buzzer sounds.
-
-Students customize the alarm by changing only **two variables**:
-
-- **Alarm Delay** – How quickly the alarm flashes.
-- **Alarm Sound** – The pitch of the buzzer.
 <video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/motion-alarm.mp4" ></video>
 
 
 ![project](../assets/stations/motion-alarm/project.png)
 
-## Components
 
-| Qty | Part |
-|-----|------|
-| 1 | Arduino Uno |
-| 1 | Breadboard |
-| 1 | Motion Sensor |
-| 1 | Red LED |
-| 1 |  Resistor |
-| 1 | Passive Buzzer |
-| 1 | USB Cable |
-| — | Jumper Wires |
+## Instructions
+
+1. Change the two numbers in the code and upload to see what it does.
+
+```ccp
+int alarmDelay = 100; // This one controls long the sound is
+int alarmSound = 300; //  This variable controls the type of sound
+```
+
+## Challenges
+
+### ⭐ Easy
+
+- Make the alarm beep faster.
+- Make the alarm beep slower.
 
 ---
 
-## Circuit
+### ⭐⭐ Medium
 
-> 📷 *Insert circuit photo here.*
+Can you make:
 
+- 📢 The highest sounding alarm
+- 🔔 The lowest sounding alarm
+- ⚡ The fastest alarm
+- 🐢 The slowest alarm
+
+---
+
+### ⭐⭐⭐ Design Challenge
+
+Design your own alarm!
+
+Give it a fun name and choose the settings that match.
+
+Ideas:
+
+- 👽 Alien Detector
+- 🐉 Dragon Alarm
+- 💎 Treasure Guard
+- 🍪 Cookie Protector
+- 🚀 Space Station Alarm
+- 🏰 Castle Security
+- 🦖 Dinosaur Detector
+
+**Alarm Name:** _______________________
+
+**Alarm Delay:** _______________________
+
+**Alarm Sound:** _______________________
 
 ## Wiring
 
@@ -51,11 +72,24 @@ Students customize the alarm by changing only **two variables**:
 | Buzzer GND | GND |
 
 
-## Code
+## Setup
+
+This uses the [standard setup instructions](index.md).
+
+### Starter Code
 
 ```cpp
-int alarmDelay = 100;
-int alarmSound = 300;
+
+// ==========================================
+// PLAY AREA
+// ==========================================
+
+int alarmDelay = 100; // This one controls long the sound is
+int alarmSound = 300; //  This variable controls the type of sound
+
+// ==========================================
+// PINS
+// ==========================================
 
 int SENSOR_PIN = 4;
 int BUZZER_PIN = 5;
@@ -86,68 +120,3 @@ void loop() {
   }
 }
 ```
-
-
-## Student Play Area
-
-Students should only edit these two lines:
-
-```cpp
-int alarmDelay = 100;
-int alarmSound = 300;
-```
-
----
-
-## What the Variables Do
-
-### `alarmDelay`
-
-Controls how quickly the LED flashes and the buzzer beeps.
-
-| Value | Effect |
-|-------:|--------|
-| 25 | Very Fast |
-| 100 | Normal |
-| 300 | Slow |
-| 700 | Very Slow |
-
----
-
-### `alarmSound`
-
-Controls the pitch of the buzzer.
-
-| Value | Effect |
-|-------:|--------|
-| 150 | Low |
-| 300 | Medium |
-| 600 | High |
-| 1000 | Very High |
-
----
-
-## Student Challenges
-
-### ⭐ Easy
-
-- Make the alarm as fast as possible.
-- Make the alarm as slow as possible.
-
-### ⭐⭐ Medium
-
-- Make the lowest sounding alarm.
-- Make the highest sounding alarm.
-
-### ⭐⭐⭐ Hard
-
-Invent your own security system!
-
-Ideas:
-
-- 👽 Alien Detector
-- 🍪 Cookie Protector
-- 🐉 Dragon Alarm
-- 🏰 Castle Security
-- 💎 Treasure Guard
-

@@ -3,8 +3,13 @@ nav:
   - About: index.md
   - Basketball Arduino: basketball-arduino.md
   - Ping Pong Launcher Arduino: pingponglauncher.md
-  # - Stations:
-  #     - ledmatrix: stations/ledmatrix.md
+  - Stations: 
+      - Station Overview: stations/index.md
+      - Basketball Game: stations/basketball.md
+      - Led Matrix: stations/ledmatrix.md
+      - LCD Screen: stations/lcdscreen.md
+      - Motion Alarm: stations/motionalarm.md
+      - RGB LED: stations/rgbled.md
 theme:
   name: readthedocs
 extra_css:
