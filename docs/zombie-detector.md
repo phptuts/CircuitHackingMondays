@@ -11,7 +11,7 @@ The gas sensor measures changes in the air. The Arduino converts the sensor read
 
 ![project](./assets/zombie-detector/project.png)
 
-# Wires
+## Wires
 
 ![wires](./assets/zombie-detector/wires.png)
 
@@ -34,7 +34,7 @@ The gas sensor measures changes in the air. The Arduino converts the sensor read
 | D3           | Servo | Orange, Yellow, or White |
 
 
-# Code
+## Code
 
 ```cpp
 #include <Servo.h>
@@ -104,5 +104,5 @@ to make the gauge update faster.
 
 ---
 
-# Memories
+## Memories
 
