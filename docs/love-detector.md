@@ -8,6 +8,8 @@ In this project, you'll build a **Love Detector** using an Arduino, a touch sens
 
 Experiment with different touches and see if true love is hiding in your fingertips!
 
+[Love Machine Site](https://phptuts.github.io/Tools/love-machine.html)
+
 <video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/love-detector.mov" ></video>
 
 
@@ -171,6 +173,8 @@ void loop() {
 }
 
 ```
+
+[Love Machine Website Code](https://github.com/phptuts/Tools/blob/main/love-machine.html)
 
 ### Try Changing the Code
 
