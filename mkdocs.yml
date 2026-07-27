@@ -3,6 +3,8 @@ nav:
   - About: index.md
   - Basketball Arduino: basketball-arduino.md
   - Ping Pong Launcher Arduino: pingponglauncher.md
+  - Zombie Detector: zombie-detector.md
+  - Love Detector: love-detector.md
   - Stations: 
       - Station Overview: stations/index.md
       - Basketball Game: stations/basketball.md
