@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Station Overview - Circuit Hacking Mondays</title>
+    <title>Zombie Detector - Circuit Hacking Mondays</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Station Overview";
-        var mkdocs_page_input_path = "stations/index.md";
+        var mkdocs_page_name = "Zombie Detector";
+        var mkdocs_page_input_path = "zombie-detector.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,8 +52,12 @@
                 <li class="toctree-l1"><a class="reference internal" href="../pingponglauncher/">Ping Pong Launcher Arduino</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../zombie-detector/">Zombie Detector</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Zombie Detector</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project">Project</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -61,20 +65,18 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Stations</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Station Overview</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/">Station Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="basketball/">Basketball Game</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/basketball/">Basketball Game</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="ledmatrix/">Led Matrix</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/ledmatrix/">Led Matrix</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="lcdscreen/">LCD Screen</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/lcdscreen/">LCD Screen</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="motionalarm/">Motion Alarm</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/motionalarm/">Motion Alarm</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="rgbled/">RGB LED</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/rgbled/">RGB LED</a>
                   </li>
               </ul>
       </div>
@@ -91,8 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Stations</li>
-      <li class="breadcrumb-item active">Station Overview</li>
+      <li class="breadcrumb-item active">Zombie Detector</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -101,15 +102,128 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="standard-setup">Standard Setup</h1>
-<p>Every station uses the same setup process.</p>
-<p>Coming Soon.</p>
+                <h1 id="zombie-detector-gauge">Zombie Detector Gauge</h1>
+<h2 id="project">Project</h2>
+<p>Build a zombie detector using a gas sensor and a servo motor.</p>
+<p>The gas sensor measures changes in the air. The Arduino converts the sensor reading into a servo angle, moving the gauge between different danger levels.</p>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/zombie-detector.mov" ></video>
+
+<p><img alt="project" src="../assets/zombie-detector/project.png" /></p>
+<h1 id="wires">Wires</h1>
+<p><img alt="wires" src="../assets/zombie-detector/wires.png" /></p>
+<h2 id="gas-sensor">Gas Sensor</h2>
+<p><img alt="Gas Sensor" src="../assets/zombie-detector/sensor.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>Component</th>
+<th>Component Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V</td>
+<td>Gas Sensor</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Gas Sensor</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>Gas Sensor</td>
+<td>AO</td>
+</tr>
+</tbody>
+</table>
+<h2 id="servo-motor">Servo Motor</h2>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>Component</th>
+<th>Wire Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V</td>
+<td>Servo</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Servo</td>
+<td>Brown or Black</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Servo</td>
+<td>Orange, Yellow, or White</td>
+</tr>
+</tbody>
+</table>
+<h1 id="code">Code</h1>
+<pre><code class="language-cpp">#include &lt;Servo.h&gt;
+
+Servo gauge;
+
+void setup() {
+  pinMode(A1, INPUT);
+
+  Serial.begin(115200);
+
+  gauge.attach(3);
+}
+
+void loop() {
+  int readout = analogRead(A1);
+
+  Serial.print(&quot;READOUT: &quot;);
+  Serial.println(readout);
+
+  int angle = 180 - map(
+    constrain(readout, 140, 170),
+    140,
+    170,
+    0,
+    180
+  );
+
+  Serial.print(&quot;ANGLE: &quot;);
+  Serial.println(angle);
+
+  gauge.write(angle);
+
+  delay(1000);
+}
+</code></pre>
+<h2 id="try-changing-the-code">Try Changing the Code</h2>
+<h3 id="change-the-sensor-range">Change the sensor range</h3>
+<pre><code class="language-cpp">constrain(readout, 140, 170)
+</code></pre>
+<p>Try making the numbers bigger or smaller to change how sensitive the detector is.</p>
+<h3 id="change-the-speed">Change the speed</h3>
+<pre><code class="language-cpp">delay(1000);
+</code></pre>
+<p>Try:</p>
+<pre><code class="language-cpp">delay(250);
+</code></pre>
+<p>or</p>
+<pre><code class="language-cpp">delay(100);
+</code></pre>
+<p>to make the gauge update faster.</p>
+<hr />
+<h1 id="memories">Memories</h1>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../love-detector/" class="btn btn-neutral float-left" title="Love Detector"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="basketball/" class="btn btn-neutral float-right" title="Basketball Game">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../pingponglauncher/" class="btn btn-neutral float-left" title="Ping Pong Launcher Arduino"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../love-detector/" class="btn btn-neutral float-right" title="Love Detector">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -132,10 +246,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../love-detector/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../pingponglauncher/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="basketball/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../love-detector/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
