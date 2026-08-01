@@ -1,4 +1,4 @@
-# Circuit Hacking Monday: Remote Controlled Light
+# Remote Controlled Lights
 
 <video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/remote-controlled-lights.mov" ></video>
 
