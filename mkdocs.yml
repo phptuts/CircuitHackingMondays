@@ -5,6 +5,7 @@ nav:
   - Ping Pong Launcher Arduino: pingponglauncher.md
   - Zombie Detector: zombie-detector.md
   - Love Detector: love-detector.md
+  - RGB LED Strip: remote-controlled-lights.md
   - Stations: 
       - Station Overview: stations/index.md
       - Basketball Game: stations/basketball.md
