@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>RGB LED Strip - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RGB LED Strip";
+        var mkdocs_page_input_path = "remote-controlled-lights.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../zombie-detector/">Zombie Detector</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../love-detector/">Love Detector</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">RGB LED Strip</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project">🛠️ Project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wires">🔌 Wires</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code">💻 Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#libraries-used">Libraries Used</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#c-code">C++ Code</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Stations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/">Station Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/basketball/">Basketball Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/ledmatrix/">Led Matrix</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/lcdscreen/">LCD Screen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/motionalarm/">Motion Alarm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/rgbled/">RGB LED</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">RGB LED Strip</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="circuit-hacking-monday-remote-controlled-light">Circuit Hacking Monday: Remote Controlled Light</h1>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/remote-controlled-lights.mov" ></video>
+
+<h2 id="project">🛠️ Project</h2>
+<p>Using IR Remote you will control and LED Light Strip.</p>
+<p><img alt="project" src="../assets/remote-controlled-lights/project.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Remote Button</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>❤️ Blinking Red</td>
+</tr>
+<tr>
+<td>2</td>
+<td>🌈 Rotating Rainbow</td>
+</tr>
+<tr>
+<td>3</td>
+<td>🎭 Theater Chase</td>
+</tr>
+<tr>
+<td>4</td>
+<td>🚓 Scanner</td>
+</tr>
+<tr>
+<td>5</td>
+<td>☄️ Comet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wires">🔌 Wires</h2>
+<p><img alt="project" src="../assets/remote-controlled-lights/ir_remote.png" /></p>
+<p><img alt="project" src="../assets/remote-controlled-lights/light_strip.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>Component</th>
+<th>Component Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V</td>
+<td>NeoPixel Ring</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>NeoPixel Ring</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NeoPixel Ring</td>
+<td>DIN</td>
+</tr>
+<tr>
+<td>3.3v</td>
+<td>IR Receiver</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>IR Receiver</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IR Receiver</td>
+<td>OUT</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="code">💻 Code</h2>
+<h3 id="libraries-used">Libraries Used</h3>
+<ul>
+<li>IRremote</li>
+<li>FastLED</li>
+</ul>
+<h3 id="c-code">C++ Code</h3>
+<pre><code class="language-cpp">#include &lt;IRremote.hpp&gt; // Include the IRremote library for infrared communication
+#include &lt;FastLED.h&gt;
+
+bool developer_ir_remote_found = false; // whether ir remote was pressed
+int developer_ir_remote_command = -1; // the button pressed by the ir remote
+
+#define PIN_DATA 3
+#define NUM_LEDS 8
+CRGB leds[NUM_LEDS];
+uint8_t baseHue = 0;
+int scannerPosition = 0;
+int scannerDirection = 1;
+int mode = 0;
+
+// Initialise the program settings and configurations
+void setup() {
+   IrReceiver.begin(2, true); //
+   // Set the speed of the stepper motor to defined/given speed in RPM.
+   FastLED.addLeds&lt;NEOPIXEL, PIN_DATA&gt;(leds, NUM_LEDS);
+   Serial.begin(115200);
+   Serial.setTimeout(100);
+
+}
+
+// The void loop function runs over and over again forever.
+void loop() {
+
+  irRemoteLoopScan(); // Checks for then ir loop scan.
+  if (developer_ir_remote_found &amp;&amp; developer_ir_remote_command &gt; 0) {
+    Serial.println(developer_ir_remote_command);
+    mode = developer_ir_remote_command;
+  }
+
+  if (mode == 69) {
+    blinkRed();
+  }
+  if (mode == 70) {
+    rotatingRainbow();
+  }
+
+  if (mode == 71) {
+    theaterChase(CRGB::Red);
+    delay(150);
+  }
+
+  if (mode == 68) {
+    scanner(CRGB::Blue);
+    delay(50);
+  }
+
+  if(mode == 64) {
+    comet(CRGB::Green);
+    delay(80);
+  }
+
+  delay(10); // stops serial flooding.
+}
+
+void rotatingRainbow()
+{
+    fill_rainbow(leds, NUM_LEDS, baseHue, 255 / NUM_LEDS);
+    FastLED.show();
+    baseHue += 32;      // Rotate the rainbow
+    delay(30);
+}
+
+void theaterChase(CRGB color)
+{
+    static uint8_t offset = 0;
+
+    fill_solid(leds, NUM_LEDS, CRGB::Black);
+
+    for (int i = offset; i &lt; NUM_LEDS; i += 3)
+    {
+        leds[i] = color;
+    }
+
+    FastLED.show();
+
+    offset = (offset + 1) % 3;
+}
+
+void blinkRed()
+{
+    for (int i = 0; i &lt; NUM_LEDS; ++i) {
+      leds[i] = CRGB::Red;
+    }
+    FastLED.show();
+    delay(500);
+    for (int i = 0; i &lt; NUM_LEDS; ++i) {
+      leds[i] = CRGB::Black;
+    }
+    FastLED.show();
+    delay(500);
+
+}
+
+
+void scanner(CRGB color)
+{
+    // Fade the previous LEDs to create a trail
+    fadeToBlackBy(leds, NUM_LEDS, 120);
+
+    // Light the current LED
+    leds[scannerPosition] = color;
+
+    FastLED.show();
+
+    // Move to the next position
+    scannerPosition += scannerDirection;
+
+    // Reverse direction at either end
+    if (scannerPosition &gt;= NUM_LEDS - 1)
+    {
+        scannerPosition = NUM_LEDS - 1;
+        scannerDirection = -1;
+    }
+    else if (scannerPosition &lt;= 0)
+    {
+        scannerPosition = 0;
+        scannerDirection = 1;
+    }
+}
+
+void comet(CRGB color)
+{
+    static uint8_t pos = 0;
+
+    fadeToBlackBy(leds, NUM_LEDS, 60);
+
+    leds[pos] = color;
+
+    FastLED.show();
+
+    pos = (pos + 1) % NUM_LEDS;
+}
+
+void irRemoteLoopScan() {
+  if (!IrReceiver.decode()) {
+    developer_ir_remote_found = false;
+    developer_ir_remote_command = -1;
+    IrReceiver.resume();
+    return;
+  }
+
+  // Short-circuit noisy/overflow frames
+  if (IrReceiver.decodedIRData.flags &amp; IRDATA_FLAGS_WAS_OVERFLOW) {
+    // Too long/garbled signal, skip
+    IrReceiver.resume();
+    developer_ir_remote_found = false;
+    developer_ir_remote_command = -1;
+    return;
+  }
+
+  // Ignore repeat frames (user holding the button)
+  if (IrReceiver.decodedIRData.flags &amp; IRDATA_FLAGS_IS_REPEAT) {
+    IrReceiver.resume();
+    developer_ir_remote_found = false;
+    developer_ir_remote_command = -1;
+    return;
+  }
+
+  developer_ir_remote_found = true;
+  developer_ir_remote_command = IrReceiver.decodedIRData.command;
+  IrReceiver.resume();
+}
+
+
+
+</code></pre>
+<h1 id="memories">Memories</h1>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../love-detector/" class="btn btn-neutral float-left" title="Love Detector"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../stations/" class="btn btn-neutral float-right" title="Station Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../love-detector/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../stations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
