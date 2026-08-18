@@ -137,7 +137,7 @@
 </thead>
 <tbody>
 <tr>
-<td>3V</td>
+<td>3V or VIN</td>
 <td>Touch Sensor</td>
 <td>VCC</td>
 </tr>
@@ -147,7 +147,7 @@
 <td>GND</td>
 </tr>
 <tr>
-<td>D7</td>
+<td>7</td>
 <td>Touch Sensor</td>
 <td>OUT</td>
 </tr>
@@ -162,15 +162,18 @@
 <td>GND</td>
 </tr>
 <tr>
-<td>D3</td>
+<td>3</td>
 <td>RGB LED Strip</td>
 <td>DIN</td>
 </tr>
 </tbody>
 </table>
+<p>If 3V does not work switch the VIN Pin.</p>
 <p><img alt="sensor" src="../assets/love-detector/sensor.png" /></p>
 <p><img alt="strip" src="../assets/love-detector/rgbledstrip.png" /></p>
 <h2 id="code">💻 Code</h2>
+<p>If you are using the Arduno IDE you will need to install the FAST LED Library. </p>
+<p>You will need to uplaod the code before using the website.</p>
 <pre><code class="language-cpp">#include &lt;FastLED.h&gt;
 
 #define LED_PIN 3
