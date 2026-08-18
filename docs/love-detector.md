@@ -22,18 +22,24 @@ Experiment with different touches and see if true love is hiding in your fingert
 
 | Arduino Pin | Component | Component Pin |
 | ------------ | --------- | ------------- |
-| 3V | Touch Sensor | VCC |
+| 3V or VIN | Touch Sensor | VCC |
 | GND | Touch Sensor | GND |
-| D7 | Touch Sensor | OUT |
+| 7 | Touch Sensor | OUT |
 | 5V | RGB LED Strip | 5V |
 | GND | RGB LED Strip | GND |
-| D3 | RGB LED Strip | DIN |
+| 3 | RGB LED Strip | DIN |
+
+If 3V does not work switch the VIN Pin.
 
 ![sensor](./assets/love-detector/sensor.png)
 
 ![strip](./assets/love-detector/rgbledstrip.png)
 
 ## 💻 Code
+
+If you are using the Arduno IDE you will need to install the FAST LED Library. 
+
+You will need to uplaod the code before using the website.
 
 ```cpp
 #include <FastLED.h>
