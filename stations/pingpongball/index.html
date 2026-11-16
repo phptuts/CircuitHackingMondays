@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Pingpongball - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pingpongball";
+        var mkdocs_page_input_path = "stations/pingpongball.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../zombie-detector/">Zombie Detector</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../love-detector/">Love Detector</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../remote-controlled-lights/">Remote Controlled Lights</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../helloworld-esp32/">Hello ESP-32</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Stations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Station Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basketball/">Basketball Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ledmatrix/">Led Matrix</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lcdscreen/">LCD Screen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../motionalarm/">Motion Alarm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rgbled/">RGB LED</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pingpongball</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Yes. I’d structure the page like this, and use names like <code>motor1Pin1</code> rather than <code>D8</code>.</p>
+<h1 id="motor-speed-controller">Motor Speed Controller</h1>
+<p>Control two DC motors using an Arduino, an L298N motor driver, and a webpage connected through <code>navigator.serial</code>.</p>
+<h2 id="wiring-table">Wiring Table</h2>
+<table>
+<thead>
+<tr>
+<th>Arduino Pin</th>
+<th>L298N Connection</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>ENA</td>
+<td>Motor 1 speed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>IN1</td>
+<td>Motor 1 direction</td>
+</tr>
+<tr>
+<td>7</td>
+<td>IN2</td>
+<td>Motor 1 direction</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ENB</td>
+<td>Motor 2 speed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>IN3</td>
+<td>Motor 2 direction</td>
+</tr>
+<tr>
+<td>4</td>
+<td>IN4</td>
+<td>Motor 2 direction</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Common ground</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Important:</strong> Remove the ENA and ENB jumpers from the L298N if they are installed. Pins 9 and 3 need to control ENA and ENB with PWM.</p>
+</blockquote>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">typedef enum {
+  CLOCKWISE = 0,
+  ANTI_CLOCKWISE = 1,
+  STOP = -1
+} Direction;
+
+// Motor 1
+const int motor1Pin1 = 8;
+const int motor1Pin2 = 7;
+const int enablePin1 = 9;
+
+// Motor 2
+const int motor2Pin1 = 5;
+const int motor2Pin2 = 4;
+const int enablePin2 = 3;
+
+void moveMotor(int motor, int speed, Direction direction) {
+  int enablePin = motor == 1 ? enablePin1 : enablePin2;
+  int pin1 = motor == 1 ? motor1Pin1 : motor2Pin1;
+  int pin2 = motor == 1 ? motor1Pin2 : motor2Pin2;
+
+  speed = constrain(speed, 0, 255);
+
+  switch (direction) {
+    case CLOCKWISE:
+      digitalWrite(pin1, HIGH);
+      digitalWrite(pin2, LOW);
+      analogWrite(enablePin, speed);
+      break;
+
+    case ANTI_CLOCKWISE:
+      digitalWrite(pin1, LOW);
+      digitalWrite(pin2, HIGH);
+      analogWrite(enablePin, speed);
+      break;
+
+    case STOP:
+      digitalWrite(pin1, LOW);
+      digitalWrite(pin2, LOW);
+      analogWrite(enablePin, 0);
+      break;
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(motor1Pin1, OUTPUT);
+  pinMode(motor1Pin2, OUTPUT);
+  pinMode(enablePin1, OUTPUT);
+
+  pinMode(motor2Pin1, OUTPUT);
+  pinMode(motor2Pin2, OUTPUT);
+  pinMode(enablePin2, OUTPUT);
+
+  moveMotor(1, 0, STOP);
+  moveMotor(2, 0, STOP);
+
+  Serial.println(&quot;READY&quot;);
+}
+
+void loop() {
+  if (Serial.available()) {
+    String command = Serial.readStringUntil('\n');
+    command.trim();
+
+    int firstColon = command.indexOf(':');
+    int secondColon = command.indexOf(':', firstColon + 1);
+
+    if (firstColon == -1 || secondColon == -1) {
+      return;
+    }
+
+    String motorText = command.substring(0, firstColon);
+    String speedText = command.substring(firstColon + 1, secondColon);
+    String directionText = command.substring(secondColon + 1);
+
+    int motor = motorText.substring(1).toInt();
+    int speed = speedText.toInt();
+
+    Direction direction = STOP;
+
+    if (directionText == &quot;F&quot;) {
+      direction = CLOCKWISE;
+    } else if (directionText == &quot;R&quot;) {
+      direction = ANTI_CLOCKWISE;
+    } else if (directionText == &quot;S&quot;) {
+      direction = STOP;
+    }
+
+    if (motor == 1 || motor == 2) {
+      moveMotor(motor, speed, direction);
+    }
+  }
+}
+</code></pre>
+<p>The webpage sends commands over <code>navigator.serial</code> in this format:</p>
+<pre><code class="language-text">M1:150:F
+</code></pre>
+<p>That means:</p>
+<ul>
+<li><code>M1</code> = Motor 1</li>
+<li><code>150</code> = Speed from 0–255</li>
+<li><code>F</code> = Forward</li>
+</ul>
+<p>Other examples:</p>
+<pre><code class="language-text">M2:200:R
+M1:100:F
+M2:0:S
+</code></pre>
+<h2 id="memories">Memories</h2>
+<h3 id="motor-speed">Motor Speed</h3>
+<p>Motor speed is controlled using PWM.</p>
+<pre><code class="language-cpp">analogWrite(enablePin, speed);
+</code></pre>
+<p>The speed can be between:</p>
+<pre><code class="language-text">0   = stopped
+255 = full speed
+</code></pre>
+<p>Try different values and see what happens:</p>
+<pre><code class="language-cpp">50
+100
+150
+200
+255
+</code></pre>
+<h3 id="motor-direction">Motor Direction</h3>
+<p>The two direction pins determine which way the motor spins.</p>
+<table>
+<thead>
+<tr>
+<th>Pin 1</th>
+<th>Pin 2</th>
+<th>Motor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIGH</td>
+<td>LOW</td>
+<td>Clockwise</td>
+</tr>
+<tr>
+<td>LOW</td>
+<td>HIGH</td>
+<td>Anti-clockwise</td>
+</tr>
+<tr>
+<td>LOW</td>
+<td>LOW</td>
+<td>Stop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="serial-commands">Serial Commands</h3>
+<p>The webpage talks to the Arduino over USB.</p>
+<p>For example:</p>
+<pre><code class="language-text">M1:175:F
+</code></pre>
+<p>The Arduino reads the command and turns Motor 1 forward at speed 175.</p>
+<h3 id="things-to-try">Things to Try</h3>
+<p>Change the motor speeds and observe what happens. Try making:</p>
+<ul>
+<li>One motor faster than the other</li>
+<li>Both motors the same speed</li>
+<li>One motor go forward and the other backward</li>
+<li>The motors run very slowly</li>
+<li>The motors suddenly stop</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

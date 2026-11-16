@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Hello ESP-32 - Circuit Hacking Mondays</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Hello ESP-32";
+        var mkdocs_page_input_path = "helloworld-esp32.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Circuit Hacking Mondays
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basketball-arduino/">Basketball Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pingponglauncher/">Ping Pong Launcher Arduino</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../zombie-detector/">Zombie Detector</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../love-detector/">Love Detector</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remote-controlled-lights/">Remote Controlled Lights</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Hello ESP-32</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-demo">Project Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#components">Components</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wiring">Wiring</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arduino-setup">Arduino Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#coding-the-server">Coding the server</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upload-server-code">Upload Server Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Stations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/">Station Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/basketball/">Basketball Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/ledmatrix/">Led Matrix</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/lcdscreen/">LCD Screen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/motionalarm/">Motion Alarm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stations/rgbled/">RGB LED</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Circuit Hacking Mondays</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Hello ESP-32</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="hello-world-esp-32">Hello World ESP-32</h1>
+<p>We'll use the ESP-32 to build a simple web server that can turn on and off and LED.  You will be able to go to a webpage and turn led on and off.</p>
+<h2 id="project-demo">Project Demo</h2>
+<video controls src="https://storage.googleapis.com/noah-education-videos/circuithackingmondays/helloworld-esp32.MOV" ></video>
+
+<h2 id="components">Components</h2>
+<ul>
+<li>ESP-32</li>
+<li>LED </li>
+<li>Resistor</li>
+</ul>
+<h2 id="wiring">Wiring</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Pin</th>
+<th>Connection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LED</td>
+<td>Anode (+, long leg)</td>
+<td>GPIO 18 through a 220Ω resistor</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>Cathode (-, short leg)</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Wiring" src="../assets/esp32-helloworld/wiring.png" /></p>
+<h2 id="arduino-setup">Arduino Setup</h2>
+<p>Go to Arduino - (Preferences or Setting).  You will see a place for additional boards.  Paste in this url.</p>
+<pre><code class="language-bash">https://espressif.github.io/arduino-esp32/package_esp32_index.json
+</code></pre>
+<p><img alt="Setting" src="../assets/esp32-helloworld/settings.png" /></p>
+<p><img alt="url" src="../assets/esp32-helloworld/additional_boards.png" /></p>
+<p>Click on the board icon and type in esp32.  You should see a option for espressif.  Install that board.</p>
+<p><img alt="install board" src="../assets/esp32-helloworld/install_board.png" /></p>
+<p>Then go to Tools -&gt; Ports and select the right port.  For the mac you will see /dev/cu.usbmodem1101 for windows you will see a COM3 or COM (Some number option).</p>
+<p><img alt="install board" src="../assets/esp32-helloworld/select_port.png" /></p>
+<p>Then go to Tools -&gt; Boards and select "DFRobot Firebeetle 2 ESP32-C6"</p>
+<p><img alt="install board" src="../assets/esp32-helloworld/select_firebeetle.png" /></p>
+<p>Then make sure these are selected in the Tools:
+The important ones are the upload speed is 115200 and the USB CDC ON Boot is enabled.</p>
+<p><img alt="install board" src="../assets/esp32-helloworld/upload-setting.png" /></p>
+<p>Upload this code you will press the right arrow button.  If the LED is blinking you wired everything correctly.</p>
+<p><img alt="install board" src="../assets/esp32-helloworld/upload_button.png" /></p>
+<pre><code class="language-ccp">void setup() {
+  // put your setup code here, to run once:
+  pinMode(18, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(18, HIGH);
+  delay(1000);
+  digitalWrite(18, LOW);
+  delay(1000);
+}
+</code></pre>
+<h2 id="coding-the-server">Coding the server</h2>
+<p>Upload this code.</p>
+<pre><code class="language-ccp">#include &lt;WiFi.h&gt;
+#include &lt;WebServer.h&gt;
+
+const char* ssid = &quot;Noisebridge&quot;;
+const char* password = &quot;noisebridge&quot;;
+
+WebServer server(80);
+
+void handleHome() {
+  server.send(200, &quot;text/html&quot;, R&quot;(
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;ESP32 Web Server&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello from ESP32!&lt;/h1&gt;
+        &lt;p&gt;Welcome to my website.&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )&quot;);
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(&quot;.&quot;);
+  }
+
+  Serial.println(&quot;\nWiFi connected!&quot;);
+  Serial.println(WiFi.localIP());
+
+  server.on(&quot;/&quot;, HTTP_GET, handleHome);
+
+  server.begin();
+  Serial.println(&quot;Web server started!&quot;);
+}
+
+void loop() {
+  server.handleClient();
+  delay(2);
+}
+</code></pre>
+<p>Go to your Serial Monitor and see the ip address of your esp32.  If you don't see serial monitor go to Tools -&gt; Serial Monitor.  Mine in the picture is 10.21.1.40.</p>
+<p><img alt="serial monitor" src="../assets/esp32-helloworld/ip_address.png" /></p>
+<p>Then open up a broswer and go to http://{ip addreess printed}.</p>
+<p>Once you have uploaded this code your ready upload the server code.  I am happy to go over the code with you and explain exactly how it works.  Please ask!</p>
+<h2 id="upload-server-code">Upload Server Code</h2>
+<pre><code class="language-ccp">
+#include &lt;WiFi.h&gt;
+#include &lt;WebServer.h&gt;
+
+const char* ssid = &quot;Noisebridge&quot;;
+const char* password = &quot;noisebridge&quot;;
+
+WebServer server(80);
+
+void handleHome() {
+  server.send(200, &quot;text/html&quot;, R&quot;(
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;ESP32 Web Server&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello from ESP32!&lt;/h1&gt;
+        &lt;p&gt;Welcome to my website.&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )&quot;);
+}
+
+void ledOn()
+{
+  digitalWrite(18, HIGH);
+  server.send(200, &quot;&quot;);
+}
+
+void ledOff()
+{
+  digitalWrite(18, LOW);
+  server.send(200, &quot;&quot;);
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(18, OUTPUT);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(&quot;.&quot;);
+  }
+
+  Serial.println(&quot;\nWiFi connected!&quot;);
+  Serial.println(WiFi.localIP());
+
+  server.on(&quot;/&quot;, HTTP_GET, handleHome);
+  server.on(&quot;/on&quot;, HTTP_GET, ledOn);
+  server.on(&quot;/off&quot;, HTTP_GET, ledOff);
+
+  server.begin();
+  Serial.println(&quot;Web server started!&quot;);
+}
+
+void loop() {
+  server.handleClient();
+  delay(2);
+}
+
+</code></pre>
+<h2 id="challenge">Challenge</h2>
+<p>Create a button on the webpage to make it the led blink.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../remote-controlled-lights/" class="btn btn-neutral float-left" title="Remote Controlled Lights"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../stations/" class="btn btn-neutral float-right" title="Station Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../remote-controlled-lights/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../stations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
