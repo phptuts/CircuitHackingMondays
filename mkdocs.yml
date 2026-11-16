@@ -5,6 +5,7 @@ nav:
   - Ping Pong Launcher Arduino: pingponglauncher.md
   - Zombie Detector: zombie-detector.md
   - Love Detector: love-detector.md
+  - Remote Controlled Lights: remote-controlled-lights.md
   - Hello ESP-32: helloworld-esp32.md
   - Stations: 
       - Station Overview: stations/index.md
