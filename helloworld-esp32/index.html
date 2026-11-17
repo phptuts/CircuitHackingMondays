@@ -255,11 +255,24 @@ void handleHome() {
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;ESP32 Web Server&lt;/title&gt;
+        &lt;title&gt;ESP-32 Light Server!!&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
-        &lt;h1&gt;Hello from ESP32!&lt;/h1&gt;
-        &lt;p&gt;Welcome to my website.&lt;/p&gt;
+        &lt;h1&gt;ESP-32 Light Server!!&lt;/h1&gt;
+        &lt;p&gt;LED: OFF&lt;/p&gt;
+        &lt;button id='on'&gt;On&lt;/button&gt;
+        &lt;button id='off'&gt;Off&lt;/button&gt;
+        &lt;script&gt;
+          const p = document.querySelector('p');
+          document.querySelector('#on').addEventListener('click', async () =&gt; {
+            await fetch('/on');
+            p.textContent = 'LED: ON';
+          });
+          document.querySelector('#off').addEventListener('click', async () =&gt; {
+            await fetch('/off');
+            p.textContent = 'LED: OFF';
+          });
+        &lt;/script&gt;
       &lt;/body&gt;
     &lt;/html&gt;
   )&quot;);
